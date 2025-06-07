@@ -1,0 +1,22 @@
+class Solution {
+  public:
+    int countSubarrays(vector<int> &arr, int k) {
+        // code here
+        unordered_map<int,int>prefixsum;
+        int res=0,cur=0;
+        
+        for(int i=0;i<arr.size();i++)
+        {
+            cur+=arr[i];
+            if(cur==k)
+            {
+                res++;
+            }
+            if(prefixsum.find(cur-k)!=prefixsum.end()){
+                res+=prefixsum[cur-k];
+            }
+            prefixsum[cur]++;
+        }
+        return res;
+    }
+};
