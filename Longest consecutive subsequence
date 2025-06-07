@@ -1,0 +1,22 @@
+class Solution {
+  public:
+
+    // Function to return length of longest subsequence of consecutive integers.
+    int longestConsecutive(vector<int>& arr) {
+        // Your code here
+        int n=arr.size();
+        unordered_set<int> h(arr.begin(),arr.end());
+        int res=1;
+        for(auto x:h)
+        {
+            if(h.find(x-1)==h.end())
+            {
+                int cur=1;
+            while(h.find(x+cur)!=h.end())
+            cur++;
+            res=max(res,cur);
+            }
+        }
+        return res;
+    }
+};
