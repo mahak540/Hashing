@@ -1,0 +1,17 @@
+class Solution {
+  public:
+    int countPairs(vector<int> &arr, int target) {
+        // Code here
+        unordered_map<int,int> prefixsum;
+        int curr=0;
+        for(int i=0;i<arr.size();i++)
+        {
+            if(prefixsum.find(target-arr[i])!=prefixsum.end())
+            {
+                curr+=prefixsum[target-arr[i]];
+            }
+            prefixsum[arr[i]]++;
+        }
+        return curr;
+    }
+};
