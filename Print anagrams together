@@ -1,0 +1,23 @@
+ unordered_map<string, vector<string>> mpp;
+
+        for(string &s : strs) {
+            vector<int> counts(26,0);
+
+            for(char &c : s) {
+                counts[c-'a']++;
+            }
+
+            string key = "";
+            for(int count : counts) {
+                key = key + '#' + to_string(count);
+            }
+
+            mpp[key].emplace_back(s);
+        }
+
+        vector<vector<string>> result;
+        for(auto &pair: mpp) {
+            result.emplace_back(pair.second);
+        }
+
+        return result;
